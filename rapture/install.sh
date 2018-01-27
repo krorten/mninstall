@@ -78,7 +78,7 @@ masternodeprivkey='$key'
 masternode=1
 ' | sudo -E tee /root/.rapturecore/rapture.conf
 sleep 3
-echo && echo "${bold}Starting Advanced Deamon...${regular}"
+echo && echo "${bold}Starting Rapture Deamon...${regular}"
 rapture-cli stop
 sleep 3
 raptured -deamon &
@@ -93,7 +93,7 @@ virtualenv ./venv
 export EDITOR=nano
 (crontab -l -u root 2>/dev/null; echo '* * * * * cd /root/.rapturecore/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1') | sudo crontab -u root -
 cd ~
-echo "advance_conf=/root/.rapturecore/rapture.conf" >> /root/.rapturecore/sentinel/sentinel.conf
+echo "rapture_conf=/root/.rapturecore/rapture.conf" >> /root/.rapturecore/sentinel/sentinel.conf
 crontab -l > tempcron
 echo "* * * * * cd /root/.rapturecore/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log" >> tempcron
 crontab tempcron
