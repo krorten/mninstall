@@ -52,9 +52,9 @@ echo && echo "F${bold}irewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing Advanced Core Files${regular}"
-wget https://github.com/AdvanceProtocol/advance/releases/download/0.13.0/advance-0.13.0-linux64.tar.gz
-tar xvzf advance-0.13.0-linux64.tar.gz
-rm advance-0.13.0-linux64.tar.gz
+wget https://github.com/AdvanceProtocol/advance/releases/download/0.13.1/advance-0.13.1-linux64.tar.gz
+tar xvzf advance-0.13.1-linux64.tar.gz
+rm advance-0.13.1-linux64.tar.gz
 sudo cp advance-linux/advance{d,-cli} /usr/local/bin
 
 sleep 3
