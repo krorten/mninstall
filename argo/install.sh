@@ -62,8 +62,8 @@ echo && echo "${bold}Setting config${regular}"
 rpcuser=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 rpcpassword=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 IP_ADD=`curl ipinfo.io/ip`
-mkdir -p .ArgoCore
-sudo touch .ArgoCore/argo.conf
+mkdir -p .argocore
+sudo touch .argocore/argo.conf
 echo '
 rpcuser='$rpcuser'
 rpcpassword='$rpcpassword'
@@ -76,14 +76,14 @@ maxconnections=250
 externalip='$IP_ADD'
 masternodeprivkey='$key'
 masternode=1
-' | sudo -E tee /root/.ArgoCore/argo.conf
+' | sudo -E tee /root/.argocore/argo.conf
 sleep 3
 echo && echo "${bold}Starting Argo Deamon...${regular}"
 argo-cli stop
 sleep 3
 argod -deamon &
 sleep 3
-cd /root/.ArgoCore/
+cd /root/.argocore/
 echo && echo "${bold}Installing Sentinel...${regular}"
 sleep 3
 sudo apt-get install -y git python-virtualenv
@@ -91,11 +91,11 @@ git clone https://github.com/argocoins/sentinel.git && cd sentinel
 virtualenv ./venv
 ./venv/bin/pip install -r requirements.txt
 export EDITOR=nano
-(crontab -l -u root 2>/dev/null; echo '* * * * * cd /root/.ArgoCore/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1') | sudo crontab -u root -
+(crontab -l -u root 2>/dev/null; echo '* * * * * cd /root/.argocore/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1') | sudo crontab -u root -
 cd ~
-echo "rapture_conf=/root/.ArgoCore/rapture.conf" >> /root/.ArgoCore/sentinel/sentinel.conf
+echo "rapture_conf=/root/.argocore/rapture.conf" >> /root/.argocore/sentinel/sentinel.conf
 crontab -l > tempcron
-echo "* * * * * cd /root/.ArgoCore/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log" >> tempcron
+echo "* * * * * cd /root/.argocore/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log" >> tempcron
 crontab tempcron
 rm tempcron
 sleep 3
