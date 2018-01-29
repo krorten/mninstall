@@ -11,7 +11,7 @@ echo "***********************************************************"
 sleep 3
 bold=$(tput bold)
 regular=$(tput sgr0)
-read -e -p "Masternode Private Key (e.g. 7edfjLCUzGczZi3JQw8GHp434R9kNY33eFyMGeKRymkB56G4324h) : " key
+read -e -p "Masternode Private Key (e.g. abcdefghijklmnopqrstuvqxyz1234567890abcde1234567890) : " key
 if [[ "$key" == "" ]]; then
     echo "SHIT: You forgot to create a private key? Try to create one in your cold wallet, exiting!!!"
     echo && exit
@@ -37,6 +37,18 @@ sudo apt-get install libboost-all-dev -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
+sudo apt-get install libminiupnpc-dev
+sudo apt-get install -y git python-virtualenv
+
+sleep 3
+echo && echo "${bold}Installing core dependecies${regular}"
+wget http://download.zeromq.org/zeromq-4.0.5.tar.gz
+tar xvzf zeromq-4.0.5.tar.gz
+cd zeromq-4.0.5
+./configure
+sudo make install
+sudo ldconfig
+cd ~
 
 echo && echo "${bold}Installing UFW...${regular}"
 sleep 3
@@ -86,7 +98,7 @@ sleep 3
 cd /root/.argocore/
 echo && echo "${bold}Installing Sentinel...${regular}"
 sleep 3
-sudo apt-get install -y git python-virtualenv
+
 git clone https://github.com/argocoins/sentinel.git && cd sentinel
 virtualenv ./venv
 ./venv/bin/pip install -r requirements.txt
