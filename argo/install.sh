@@ -42,9 +42,9 @@ sudo apt-get install -y git python-virtualenv
 
 sleep 3
 echo && echo "${bold}Installing core dependecies${regular}"
-wget http://download.zeromq.org/zeromq-4.0.5.tar.gz
-tar xvzf zeromq-4.0.5.tar.gz
-cd zeromq-4.0.5
+wget https://github.com/zeromq/libzmq/releases/download/v4.2.2/zeromq-4.2.2.tar.gz
+tar xvzf zeromq-4.2.2.tar.gz
+cd zeromq-4.2.2
 ./configure
 sudo make install
 sudo ldconfig
