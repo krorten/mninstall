@@ -4,7 +4,7 @@ clear
 
 cd ~
 echo "***********************************************************"
-echo "* Welcome to Kayroons SUCR masternode install script   *"
+echo "* Welcome to Kayroons ALPHA masternode install script   *"
 echo "*                                                         *"                                                        
 echo "*                   Powered by EK Holdining               *"                                
 echo "***********************************************************"
@@ -32,9 +32,8 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 sudo apt-get install nano htop git -y
-sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev libzmq3-dev bsdmainutils software-properties-common -y
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common -y
 sudo apt-get install libboost-all-dev -y
-sudo apt-get install libminiupnpc-dev libgmp-dev libgmp3-dev autoconf -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
@@ -47,31 +46,24 @@ sleep 3
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
-sudo ufw allow 9336/tcp
+sudo ufw allow 52335/tcp
 echo "y" | sudo ufw enable
 echo && echo "F${bold}irewall installed and enabled!${regular}"
 
 echo && echo
-echo "${bold}Downloading and installing Sucr Core Files${regular}"
-git clone https://github.com/sucremoneda/SucreCore.git
-cd SucreCore
-find . -name "*.sh" -exec sudo chmod 755 {} \;
-./autogen.sh
-./configure --without-gui
-make
-cd src
-strip sucrd
-strip sucr-cli
-strip sucr-tx
-sudo cp sucr{d,-cli,-tx} /usr/local/bin
+echo "${bold}Downloading and installing ALPHA Core Files${regular}"
+wget https://github.com/alp-project/AlphaCoin/releases/download/v1.0.0/alp-1.0.0-x86_64-linux-gnu.tar.gz
+tar xvzf alp-1.0.0-x86_64-linux-gnu.tar.gz
+rm alp-1.0.0-x86_64-linux-gnu.tar.gz
+sudo cp alp-1.0.0/bin/alp{d,-cli} /usr/local/bin
 
 sleep 3
-cd /root/.sucrcore
 echo && echo "${bold}Setting config${regular}"
 rpcuser=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 rpcpassword=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
 IP_ADD=`curl ipinfo.io/ip`
-sudo touch .sucrcore/sucr.conf
+mkdir -p .AlphaCoin
+sudo touch .AlphaCoin/alp.conf
 echo '
 rpcuser='$rpcuser'
 rpcpassword='$rpcpassword'
@@ -80,29 +72,35 @@ listen=1
 server=1
 daemon=1
 logtimestamps=1
-maxconnections=256
+maxconnections=250
 externalip='$IP_ADD'
 masternodeprivkey='$key'
 masternode=1
-' | sudo -E tee /root/.sucrcore/sucr.conf
+' | sudo -E tee /root/.AlphaCoin/alp.conf
 sleep 3
-echo && echo "${bold}Starting Sucr Deamon...${regular}"
-sucrd -deamon &
+echo && echo "${bold}Starting ALPHA Deamon...${regular}"
+alp-cli stop
 sleep 3
-cd /root/.sucrcore/
-echo && echo "${bold}Installing Sentinel...${regular}"
+alpd -deamon &
 sleep 3
-sudo apt-get install -y git python-virtualenv
-git clone https://github.com/sucremoneda/sentinel.git && cd sentinel
-virtualenv ./venv
-./venv/bin/pip install -r requirements.txt
-export EDITOR=nano
-(crontab -l -u root 2>/dev/null; echo '* * * * * cd /root/.sucrcore/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1') | sudo crontab -u root -
-cd ~
-echo "sucr_conf=/root/.sucrcore/sucr.conf" >> /root/.sucrcore/sentinel/sentinel.conf
-crontab -l > tempcron
-echo "* * * * * cd /root/.sucrcore/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log" >> tempcron
-crontab tempcron
-rm tempcron
+cd /root/.AlphaCoin/
 
+#THIS IS ONLY PRESUMABLY, WILL HAVE TO CHANGE CODE ONCE THEY RELEASE SENTINEL
+#echo && echo "${bold}Installing Sentinel...${regular}"
+#sleep 3
+#sudo apt-get install -y git python-virtualenv
+#git clone https://github.com/alp-project/sentinel.git && cd sentinel
+#virtualenv ./venv
+#./venv/bin/pip install -r requirements.txt
+#export EDITOR=nano
+#(crontab -l -u root 2>/dev/null; echo '* * * * * cd /root/.AlphaCoin/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1') | sudo crontab -u root -
+#cd ~
+#echo "alp_conf=/root/.AlphaCoin/alp.conf" >> /root/.AlphaCoin/sentinel/sentinel.conf
+#crontab -l > tempcron
+#echo "* * * * * cd /root/.AlphaCoin/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log" >> tempcron
+#crontab tempcron
+#rm tempcron
+sleep 3
+echo && echo "${bold}Checking ALPHA Deamon...${regular}"
+alp-cli getinfo
 echo && echo "${bold}Have a beer and enjoy! Masternode setup is complete.${regular}"
