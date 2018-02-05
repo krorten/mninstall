@@ -6,7 +6,7 @@ cd ~
 echo "***********************************************************"
 echo "* Welcome to Kayroons RACE masternode install script	   *"
 echo "*                                                         *"                                                        
-echo "* This script will install RACE MASTERNODE with Sentinel 	*"                                
+echo "* This script will install RACE MASTERNODE with Sentinel 	local*"                                
 echo "***********************************************************"
 sleep 3
 bold=$(tput bold)
@@ -36,6 +36,7 @@ sudo apt-get install build-essential libtool autotools-dev automake pkg-config l
 sudo apt-get install libboost-all-dev -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update -y
+sudo apt-get install libminiupnpc-dev
 sudo apt-get install libdb4.8-dev libdb4.8++-dev lbzip2 -y
 
 echo && echo "${bold}Installing UFW...${regular}"
@@ -53,7 +54,7 @@ echo && echo "F${bold}irewall installed and enabled!${regular}"
 echo && echo
 echo "${bold}Downloading and installing Race Core Files${regular}"
 wget https://github.com/racecrypto/racecoin/releases/download/v0.12.2.3/racecore-0.12.2-linux64.tar.bz2
-tar -c -I lbzip2 -f racecore-0.12.2-linux64.tar.bz2 racecore-0.12.2-linux64
+sudo tar -xjvf racecore-0.12.2-linux64.tar.bz2
 rm racecore-0.12.2-linux64.tar.bz2
 sudo cp racecore-0.12.2.3-linux64/race{d,-cli} /usr/local/bin
 
