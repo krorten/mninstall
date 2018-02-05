@@ -4,9 +4,9 @@ clear
 
 cd ~
 echo "***********************************************************"
-echo "* Welcome to Kayroons RACE masternode install script   *"
+echo "* Welcome to Kayroons RACE masternode install script	   *"
 echo "*                                                         *"                                                        
-echo "*                   Powered by EK Holdining               *"                                
+echo "* This script will install RACE MASTERNODE with Sentinel 	*"                                
 echo "***********************************************************"
 sleep 3
 bold=$(tput bold)
