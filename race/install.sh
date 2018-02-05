@@ -4,9 +4,9 @@ clear
 
 cd ~
 echo "***********************************************************"
-echo "* Welcome to Kayroons RACE masternode install script	   *"
-echo "*                                                         *"                                                        
-echo "* This script will install RACE MASTERNODE with Sentinel 	local*"                                
+echo "* Welcome to Kayroons RACE masternode install script	    *"
+echo "*                                                         *"
+echo "* This script will install RACE MASTERNODE with Sentinel 	*"
 echo "***********************************************************"
 sleep 3
 bold=$(tput bold)
@@ -47,7 +47,7 @@ sleep 3
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
-sudo ufw allow 8801/tcp
+sudo ufw allow 8800/tcp
 echo "y" | sudo ufw enable
 echo && echo "F${bold}irewall installed and enabled!${regular}"
 
