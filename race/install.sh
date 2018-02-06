@@ -36,7 +36,7 @@ sudo apt-get install build-essential libtool autotools-dev automake pkg-config l
 sudo apt-get install libboost-all-dev -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update -y
-sudo apt-get install libminiupnpc-dev
+sudo apt-get install libminiupnpc-dev -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev lbzip2 -y
 
 echo && echo "${bold}Installing UFW...${regular}"
@@ -49,7 +49,7 @@ sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw allow 8800/tcp
 echo "y" | sudo ufw enable
-echo && echo "F${bold}irewall installed and enabled!${regular}"
+echo && echo "${bold}Firewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing Race Core Files${regular}"

@@ -36,7 +36,7 @@ sudo apt-get install build-essential libtool autotools-dev automake pkg-config l
 sudo apt-get install libboost-all-dev -y
 sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update -y
-sudo apt-get install libminiupnpc-dev
+sudo apt-get install libminiupnpc-dev -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev lbzip2 -y
 
 echo && echo "${bold}Installing UFW...${regular}"
@@ -53,10 +53,10 @@ echo && echo "F${bold}irewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing 01 Core Files${regular}"
-wget https://github.com/zeroonecoin/zeroonecoin/blob/master/release/zeroone-linux.tar.gz
+wget https://github.com/zeroonecoin/zeroonecoin/raw/master/release/zeroone-linux.tar.gz
 sudo tar -zxvf zeroone-linux.tar.gz
 rm zeroone-linux.tar.gz
-sudo cp zeroone-linux/zeroone{d,-cli} /usr/local/bin
+sudo cp zeroone{d,-cli} /usr/local/bin
 
 sleep 3
 echo && echo "${bold}Setting config${regular}"

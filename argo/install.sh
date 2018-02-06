@@ -60,7 +60,7 @@ sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw allow 8989/tcp
 echo "y" | sudo ufw enable
-echo && echo "F${bold}irewall installed and enabled!${regular}"
+echo && echo "${bold}Firewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing Argo Core Files${regular}"
