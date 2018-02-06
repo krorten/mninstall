@@ -39,6 +39,9 @@ sudo apt-get update -y
 sudo apt-get install libminiupnpc-dev -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev lbzip2 -y
 
+# This coin demands libboost 5.4.0, witch is not default in ubuntu 16.04
+
+
 echo && echo "${bold}Installing UFW...${regular}"
 sleep 3
 sudo apt-get -y install ufw
