@@ -3,11 +3,11 @@
 clear
 
 cd ~
-echo "***********************************************************"
-echo "* Welcome to Kayroons CROPCOIN masternode install script	    *"
-echo "*                                                         *"
-echo "* This script will install CROPCOIN MASTERNODE with Sentinel 	*"
-echo "***********************************************************"
+echo "***************************************************************"
+echo "* Welcome to Kayroons CROPCOIN masternode install script 		*"
+echo "*                                                         	*"
+echo "* This script installs CROPCOIN MASTERNODE without Sentinel 	*"
+echo "***************************************************************"
 sleep 3
 bold=$(tput bold)
 regular=$(tput sgr0)
