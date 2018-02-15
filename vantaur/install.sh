@@ -69,7 +69,7 @@ echo "${bold}Downloading and installing Vantaur Files${regular}"
 git clone https://github.com/vantaur/vantaur
 cd vantaur
 cd src
-make –f makefile.unix (This will take a while 10-30mins)
+make –f makefile.unix
 strip vantaurd
 sudo cp vantaurd /usr/local/bin
 
