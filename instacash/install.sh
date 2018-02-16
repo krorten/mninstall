@@ -64,10 +64,10 @@ echo && echo "${bold}Firewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing InstaCash Files${regular}"
-wget https://kroapps.no/instacash-1.0.99-x86_64-linux-gnu.tar.gz
-tar xvzf instacash-1.0.99-x86_64-linux-gnu.tar.gz
-rm instacash-1.0.99-x86_64-linux-gnu.tar.gz
-sudo cp instacash-1.0.99/bin/instacash{d,-cli} /usr/local/bin
+wget https://instacash.cc/instacash-1.1.0-x86_64-linux-gnu.tar.gz
+tar xvzf instacash-1.1.0-x86_64-linux-gnu.tar.gz
+rm instacash-1.1.0-x86_64-linux-gnu.tar.gz
+sudo cp instacash-1.1.0/bin/instacash{d,-cli} /usr/local/bin
 
 sleep 3
 echo && echo "${bold}Setting config${regular}"
