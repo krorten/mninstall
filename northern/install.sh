@@ -55,10 +55,10 @@ echo && echo "${bold}Firewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing NORTHERN Files${regular}"
-wget https://github.com/Northerncryptodev/Northern/releases/download/1/northern-2.0.0.x86_64-linux-gnu-daemon-nogui.tar.gz
-tar xvzf northern-2.0.0.x86_64-linux-gnu-daemon-nogui.tar.gz
-rm northern-2.0.0.x86_64-linux-gnu-daemon-nogui.tar.gz
-sudo cp northern-2.0.0/northern{d,-cli} /usr/local/bin
+wget https://github.com/Northerncryptodev/Northern/releases/download/v2.0.1/northern-2.0.1.x86_64-linux-gnu-daemon-nogui.tar.gz
+tar xvzf northern-2.0.1.x86_64-linux-gnu-daemon-nogui.tar.gz
+rm northern-2.0.1.x86_64-linux-gnu-daemon-nogui.tar.gz
+sudo cp northern-2.0.1/northern{d,-cli} /usr/local/bin
 
 sleep 3
 echo && echo "${bold}Setting config${regular}"
