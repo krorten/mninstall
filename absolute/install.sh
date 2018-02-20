@@ -86,6 +86,22 @@ absolute-cli stop
 sleep 10
 absoluted -deamon &
 sleep 3
+cd /root/.absolutecore/
+echo && echo "${bold}Installing Sentinel...${regular}"
+sleep 3
+sudo apt-get install -y git python-virtualenv
+git clone https://github.com/absolutecrypto/sentinel.git && cd sentinel
+virtualenv ./venv
+./venv/bin/pip install -r requirements.txt
+export EDITOR=nano
+(crontab -l -u root 2>/dev/null; echo '* * * * * cd /root/.absolutecore/sentinel && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1') | sudo crontab -u root -
+cd ~
+echo "race_conf=/root/.absolutecore/absolute.conf" >> /root/.absolutecore/sentinel/sentinel.conf
+crontab -l > tempcron
+echo "* * * * * cd /root/.absolutecore/sentinel && ./venv/bin/python bin/sentinel.py 2>&1 >> sentinel-cron.log" >> tempcron
+crontab tempcron
+rm tempcron
+sleep 3
 echo && echo "${bold}Checking ABSOULTE Deamon...${regular}"
 absolute-cli getinfo
 echo && echo "${bold}Have a beer and enjoy! Masternode setup is complete.${regular}"
