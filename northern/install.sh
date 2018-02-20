@@ -105,4 +105,5 @@ crontab -l 2>/dev/null
 sleep 3
 echo && echo "${bold}Checking NORTHERN Deamon...${regular}"
 northern-cli getinfo
+northern-cli startmasternode local false
 echo && echo "${bold}Have a beer and enjoy! Masternode setup is complete.${regular}"
