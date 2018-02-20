@@ -77,6 +77,7 @@ daemon=1
 logtimestamps=1
 maxconnections=250
 externalip='$IP_ADD'
+masternodeaddr='$IP_ADD'
 masternodeprivkey='$key'
 masternode=1
 ' | sudo -E tee /root/.northern/northern.conf
@@ -85,6 +86,22 @@ echo && echo "${bold}Starting NORTHERN Deamon...${regular}"
 northern-cli stop
 sleep 10
 northernd -deamon &
+sleep 3
+crontab -l 2>/dev/null
+
+  echo '@reboot sleep 30 && northernd -daemon -shrinkdebugfile'
+
+  ) | crontab
+
+  (
+
+    crontab -l 2>/dev/null
+
+      echo '@reboot sleep 60 && northern-cli startmasternode local false'
+
+      ) | crontab
+
+      northernd -daemon
 sleep 3
 echo && echo "${bold}Checking NORTHERN Deamon...${regular}"
 northern-cli getinfo
