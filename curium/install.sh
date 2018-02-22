@@ -66,7 +66,7 @@ echo && echo "${bold}Firewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing Curium Files${regular}"
-git https://github.com/mrmetech/Curium-Official.git
+git clone https://github.com/mrmetech/Curium-Official.git
 cd Curium-Official
 find . -name "*.sh" -exec sudo chmod 755 {} \;
 cd src/leveldb
