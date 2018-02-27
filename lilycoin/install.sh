@@ -56,13 +56,17 @@ echo "${bold}Downloading and installing LilyCoin Files${regular}"
 git clone https://github.com/jembem/lili.git
 cd lili
 find . -name "*.sh" -exec sudo chmod 755 {} \;
+cd src/leveldb
+chmod +x build_detect_platform 
+make libleveldb.a libmemenv.a 
+cd ../.. 
 ./autogen.sh
 ./configure --without-gui
 make
 cd src
 strip lilid
 strip lili-cli
-sudo cp lili{d,-cli,-tx} /usr/local/bin
+sudo cp lili{d,-cli} /usr/local/bin
 
 sleep 3
 cd /root/.lili
@@ -85,8 +89,8 @@ masternodeprivkey='$key'
 masternode=1
 ' | sudo -E tee /root/.lili/lili.conf
 sleep 3
-echo && echo "${bold}Starting LILY Deamon...${regular}"
-sucrd -deamon &
+echo && echo "${bold}Starting LILI Deamon...${regular}"
+lilid -deamon &
 sleep 3
 
 echo && echo "${bold}Have a beer and enjoy! Masternode setup is complete.${regular}"
