@@ -41,6 +41,15 @@ sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 sudo apt-get install libminiupnpc-dev -y
 sudo apt-get install -y git python-virtualenv
 
+sleep 3
+echo && echo "${bold}Installing required boost${regular}"
+wget kroapps.com/boost_1_58_0.tar.bz2
+tar --bzip2 -xf boost_1_58_0.tar.bz2 
+cd boost_1_58_0/
+./b2 --with=all install
+sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf'
+ldconfig
+
 echo && echo "${bold}Installing UFW...${regular}"
 sleep 3
 sudo apt-get -y install ufw
