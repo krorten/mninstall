@@ -46,6 +46,7 @@ echo && echo "${bold}Installing required boost${regular}"
 wget kroapps.com/boost_1_58_0.tar.bz2
 tar --bzip2 -xf boost_1_58_0.tar.bz2 
 cd boost_1_58_0/
+./bootstrap.sh --prefix=/usr/local
 ./b2 --with=all install
 sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf'
 ldconfig
