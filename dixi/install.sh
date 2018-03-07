@@ -59,8 +59,8 @@ wget https://github.com/Dixicoin-DXC/Dixicoin/releases/download/v4.1/dixi-4.1.0-
 unzip dixi-4.1.0-aarch64-linux-gnu.zip
 rm dixi-4.1.0-aarch64-linux-gnu.zip
 sudo cp dixi-4.1.0-aarch64-linux-gnu/dixicoin{d,-cli} /usr/local/bin
-sudo chmod -x /usr/local/bin/dixicoind
-sudo chmod -x /usr/local/bin/dixicoin-cli
+sudo chmod +x /usr/local/bin/dixicoind
+sudo chmod +x /usr/local/bin/dixicoin-cli
 sleep 3
 echo && echo "${bold}Setting config${regular}"
 rpcuser=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
