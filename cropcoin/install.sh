@@ -76,16 +76,16 @@ echo && echo "F${bold}irewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing CROPCOIN Core Files${regular}"
-wget https://github.com/Cropdev/CropDev/archive/v1.0.0.2.tar.gz
-tar -xvf v1.0.0.2.tar.gz
-cd CropDev-1.0.0.2/src
+wget https://github.com/Cropdev/CropDev/archive/v1.0.0.3.tar.gz
+tar -xvf v1.0.0.3.tar.gz
+cd CropDev-1.0.0.3/src
 mkdir obj/support
 mkdir obj/crypto
 make -f makefile.unix
 strip cropcoind
 chmod +x cropcoind
 cd --
-sudo cp CropDev-1.0.0.2/src/cropcoind /usr/local/bin
+sudo cp CropDev-1.0.0.3/src/cropcoind /usr/local/bin
 
 sleep 3
 echo && echo "${bold}Setting config${regular}"
