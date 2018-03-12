@@ -31,7 +31,3 @@ sleep 3
 
 cropcoind getinfo
 echo && echo "${bold}Have a beer and enjoy! Masternode setup is complete.${regular}"
-
-
-
-
