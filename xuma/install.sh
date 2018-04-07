@@ -55,10 +55,10 @@ echo && echo "${bold}Firewall installed and enabled!${regular}"
 
 echo && echo
 echo "${bold}Downloading and installing ABSOULTE Files${regular}"
-wget https://github.com/xumacoin/xuma-core/releases/download/1.0.2/Xuma-Core-Linux64-1.0.2.zip
-unzip Xuma-Core-Linux64-1.0.2.zip
-rm Xuma-Core-Linux64-1.0.2.zip
-sudo cp Xuma-Core-Linux64-1.0.2/xuma{d,-cli} /usr/local/bin
+wget https://github.com/xumacoin/xuma-core/releases/download/1.0.5/Xuma-Core-Linux64-1.0.5.zip
+unzip Xuma-Core-Linux64-1.0.5.zip
+rm Xuma-Core-Linux64-1.0.5.zip
+sudo cp Xuma-Core-Linux64-1.0.5/xuma{d,-cli} /usr/local/bin
 
 sleep 3
 echo && echo "${bold}Setting config${regular}"
