@@ -55,7 +55,7 @@ echo "y" | sudo ufw enable
 echo && echo "${bold}Firewall installed and enabled!${regular}"
 
 echo && echo
-echo "${bold}Downloading and installing ABSOULTE Files${regular}"
+echo "${bold}Downloading and installing HENGA Files${regular}"
 wget https://github.com/HengaCoin/henga/releases/download/v1.0/henga-cli
 wget https://github.com/HengaCoin/henga/releases/download/v1.0/hengad
 sudo cp henga{d,-cli} /usr/local/bin
@@ -82,11 +82,11 @@ masternodeprivkey='$key'
 masternode=1
 ' | sudo -E tee /root/.henga/henga.conf
 sleep 3
-echo && echo "${bold}Starting ABSOULTE Deamon...${regular}"
+echo && echo "${bold}Starting HENGA Deamon...${regular}"
 henga-cli stop
 sleep 10
 hengad -deamon &
 sleep 3
-echo && echo "${bold}Checking ABSOULTE Deamon...${regular}"
+echo && echo "${bold}Checking HENGA Deamon...${regular}"
 henga-cli getinfo
 echo && echo "${bold}Have a beer and enjoy! Masternode setup is complete.${regular}"
